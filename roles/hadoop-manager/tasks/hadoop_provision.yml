@@ -1,0 +1,24 @@
+---
+- file: path={{ hadoop_path }} state=absent
+  sudo: yes
+
+- file: path=/tmp/hadoop* state=absent
+  sudo: yes
+  sudo_user: ec2-user
+
+- file: path=/tmp/Jetty* state=absent
+  sudo: yes
+  sudo_user: ec2-user
+#- user: name=hduser comment="Hadoop user" group=hadoop
+
+- file: path={{ hadoop_parent_path }} state=directory
+
+- name: Copy and unpack hadoop tar file
+  unarchive: src=hadoop-2.6.0.tar.gz dest={{ hadoop_parent_path }} force=yes owner=ec2-user
+  sudo: yes
+
+- shell: "sudo chown -R ec2-user {{ hadoop_path }}"
+  
+
+
+ 

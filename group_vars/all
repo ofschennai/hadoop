@@ -1,0 +1,5 @@
+---
+clean_previous_installation: yes
+aws_keys_path: /home/ec2-user/awa/keys/ofs-karthic.pem
+awd: /tmp/ansible
+key_file_name: ofs-karthic.pem

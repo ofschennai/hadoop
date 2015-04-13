@@ -1,0 +1,8 @@
+---
+- hosts: NameNode
+  roles:
+  - { role: hadoop-user, action: 'hadoop_build_mapreduce' }
+  - { role: hadoop-user, action: 'hadoop_load_data' }
+  - { role: hadoop-user, action: 'hadoop_run_mapreduce' }
+  - { role: hadoop-user, action: 'hadoop_load_result' }
+

@@ -1,0 +1,6 @@
+---
+- shell: "cd {{ hadoop_path }}/bin"
+
+- shell: "yes | {{ hadoop_path }}/bin/hdfs namenode -format"
+
+

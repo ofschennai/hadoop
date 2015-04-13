@@ -1,0 +1,9 @@
+---
+- name: stop namdnode and datanodes
+  shell: "yes | /usr/local/hadoop-2.6.0/sbin/stop-dfs.sh"
+  ignore_errors: true
+
+- name: stop resource manage and node managers
+  shell: "yes | /usr/local/hadoop-2.6.0/sbin/stop-yarn.sh"
+  ignore_errors: true
+

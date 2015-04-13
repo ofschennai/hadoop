@@ -1,0 +1,42 @@
+---
+
+# master playbook
+
+- hosts: all
+  roles: 
+  - { role: common, action: 'install_java' }
+  - { role: common, action: 'prepare_hosts' }
+
+- hosts: NameNode
+  roles:
+  - { role: hadoop-manager, action: 'hadoop_stop_services' }
+
+- hosts: hadoop
+  roles:
+  - { role: hadoop-manager, action: 'hadoop_provision' }
+  - { role: hadoop-manager, action: 'hadoop_namenode_setup_ec2' }
+  - { role: hadoop-manager, action: 'hadoop_configuration' }
+  - { role: hadoop-manager, action: 'hadoop_add_datanodes' }
+
+- hosts: NameNode
+  roles:
+#  - { role: hadoop-manager, action: 'hadoop_namenode_setup_non-ec2'}
+  - { role: hadoop-manager, action: 'hadoop_format_hdfs' }
+
+#- hosts: NameNode
+#  roles: 
+#  - { role: hadoop-manager, action: 'hadoop_start_dfs' }
+
+#- hosts: ResourceManager
+#  roles: 
+#  - { role: hadoop-manager, action: 'hadoop_start_yarn' }
+
+#- hosts: hadoop
+#  - { role: hadoop-manager, action: 'hadoop_verify_services' }
+
+#- hosts: NameNode
+#  roles:
+#  - { role: hadoop-user, action: 'hadoop_build_mapreduce' }
+#  - { role: hadoop-user, action: 'hadoop_load_data' }
+#  - { role: hadoop-user, action: 'hadoop_run_mapreduce' }
+#  - { role: hadoop-user, action: 'hadoop_load_result' }

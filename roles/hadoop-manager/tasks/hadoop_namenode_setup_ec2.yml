@@ -1,0 +1,21 @@
+---
+- file: path={{ hadoop_user_home_dir }}/.ssh/id_rsa state=absent
+  sudo: yes
+- copy: src={{ key_file_name }} dest={{ hadoop_user_home_dir }}/.ssh/id_rsa owner=ec2-user
+- shell: chmod 600 {{ hadoop_user_home_dir }}/.ssh/id_rsa
+- copy: src={{ key_file_name }} dest=/root/.ssh/id_rsa
+  sudo: yes
+- shell: chmod 600 /root/.ssh/id_rsa
+  sudo: yes
+#- copy: src={{ key_file_name }} dest={{ awd }}/{{ key_file_name }} owner=ec2-user
+#- shell: chmod 400 {{ awd }}/{{ key_file_name }}
+#- shell: "eval `ssh-agent -s`"  
+#- shell: "ssh-add {{ awd }}/{{ key_file_name }}"
+#  ignore_errors: true
+#- file: path={{ awd }}/{{ key_file_name }} state=absent
+
+
+
+
+
+

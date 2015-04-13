@@ -1,0 +1,9 @@
+---
+java_version: jdk1.8.0_25
+java_parent_path: "/usr/local/java"
+java_path: "/usr/local/java/jdk1.8.0_25"
+hadoop_parent_path: "/usr/local"
+hadoop_path: "/usr/local/hadoop-2.6.0"
+stage_prod: production
+jdk_file_name: jdk-8u25-linux-x64.gz
+
