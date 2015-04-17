@@ -1,4 +1,4 @@
-stage_prod: production
+#stage_prod: production
 source_file_absolute_path: /usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user/source
 data_file_absolute_path: /usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user
 result_file_absolute_path: /usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user/result

@@ -1,4 +1,6 @@
 ---
+
+#- script: "{{ hadoop_path }}/sbin/start-dfs.sh"
 - shell: "cd {{ hadoop_path }}/sbin"
 
 - shell: "yes | /usr/local/hadoop-2.6.0/sbin/start-dfs.sh"

@@ -6,7 +6,7 @@
 #  when: "stage_prod == 'prod'"
   sudo: yes
  
-- copy: src=stage-slaves dest={{ hadoop_path }}/etc/hadoop/slaves force=yes
-  when: "stage_prod == 'stage'"
+#- copy: src=stage-slaves dest={{ hadoop_path }}/etc/hadoop/slaves force=yes
+#  when: "stage_prod == 'stage'"
 
 

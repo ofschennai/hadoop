@@ -4,7 +4,7 @@
   sudo: yes
 
 - name: unarchive the java installation files
-  unarchive: src={{ jdk_file_name }} dest={{ java_parent_path }}
+  unarchive: src={{ hadoop_user_home_dir }}/awa/binaries/{{ jdk_file_name }} dest={{ java_parent_path }}
   sudo: yes
 
 - name: remove open java
@@ -19,24 +19,25 @@
 #  shell: sudo rm /usr/bin/javaws removes=/usr/bin/javaws
 
 - name: update system to use installed java
-  alternatives: name=java link=/usr/bin/java path="{{ java_path }}"/bin/java
-  sudo: yes
-  alternatives: name=javac link=/usr/bin/javac path="{{ java_path }}"/bin/javac
-  sudo: yes
-  alternatives: name=javaws link=/usr/bin/javaws path="{{ java_path }}"/bin/javaws
-  sudo: yes 
+#  alternatives: name=java link=/usr/bin/java path="{{ java_path }}"/bin/java
+#  sudo: yes
+#  alternatives: name=javac link=/usr/bin/javac path="{{ java_path }}"/bin/javac
+#  sudo: yes
+#  alternatives: name=javaws link=/usr/bin/javaws path="{{ java_path }}"/bin/javaws
+#  sudo: yes 
 
-#  shell: "sudo update-alternatives --install /usr/bin/java java {{ java_path }}/bin/java 1"
-#  sudo: no
-#  shell: "sudo update-alternatives --install /usr/bin/javac javac {{ java_path }}/bin/javac 1"
-#  sudo: no
-#  shell: "sudo update-alternatives --install /usr/bin/javaws javaws {{ java_path }}/bin/javaws 1"
-#  sudo: no
+  shell: "sudo update-alternatives --install /usr/bin/java java {{ java_path }}/bin/java 1"
+  sudo: yes
+  shell: "sudo update-alternatives --install /usr/bin/javac javac {{ java_path }}/bin/javac 1"
+  sudo: yes 
+  shell: "sudo update-alternatives --install /usr/bin/javaws javaws {{ java_path }}/bin/javaws 1"
+  sudo: yes
 #  shell: "sudo update-alternatives --set java {{ java_path }}/bin/java"
-#  sudo: no
+#  sudo: yes 
 #  shell: "sudo update-alternatives --set javac {{ java_path }}/bin/javac"
-#  sudo: no
+#  sudo: yes
 #  shell: "sudo update-alternatives --set javaws {{ java_path }}/bin/javaws"
+#  sudo: yes
 
 
 - name: add java path to /etc/profile

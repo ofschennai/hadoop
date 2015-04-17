@@ -34,10 +34,10 @@
 #  when: "stage_prod == 'stage'"
 #  sudo: yes
 
-- file: path={{ hadoop_path }}/yarn_data/hdfs/namenode state=directory owner=ec2-user recurse=yes
+- file: path={{ hadoop_path }}/yarn_data/hdfs/namenode state=directory owner={{ sudo_user }} recurse=yes
   sudo: yes
 
-- file: path={{ hadoop_path }}/yarn_data/hdfs/datanode state=directory owner=ec2-user recurse=yes
+- file: path={{ hadoop_path }}/yarn_data/hdfs/datanode state=directory owner={{ sudo_user }} recurse=yes
   sudo: yes
 
 #- copy: src=stage-hdfs-site.xml dest={{ hadoop_path }}/etc/hadoop/hdfs-site.xml force=yes
@@ -55,4 +55,4 @@
 - copy: src=prod-hdfs-site.xml dest={{ hadoop_path }}/etc/hadoop/hdfs-site.xml force=yes
   sudo: yes
 
-- shell: "sudo chown -R ec2-user {{ hadoop_path }}"
+- shell: "sudo chown -R {{ sudo_user }} {{ hadoop_path }}"

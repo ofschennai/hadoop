@@ -1,28 +1,28 @@
 ---
-- file: path=/usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user state=directory owner=ec2-user
-- file: path=/usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user/source state=directory owner=ec2-user
-- file: path=/usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user/data state=directory owner=ec2-user
-- file: path=/usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user/result state=directory owner=ec2-user
-- file: path=/usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user/{{ mapreduce_java_file_name }} state=directory owner=ec2-user
+- file: path={{ hadoop_path }}/share/hadoop/mapreduce/user state=directory owner={{ sudo_user }}
+- file: path={{ hadoop_path }}/share/hadoop/mapreduce/user/source state=directory owner={{ sudo_user }}
+- file: path={{ hadoop_path }}/share/hadoop/mapreduce/user/data state=directory owner={{ sudo_user }}
+- file: path={{ hadoop_path }}/share/hadoop/mapreduce/user/result state=directory owner={{ sudo_user }}
+- file: path={{ hadoop_path }}/share/hadoop/mapreduce/user/{{ mapreduce_java_file_name }} state=directory owner={{ sudo_user }}
 
-- file: path=/usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user/source/*.class state=absent
+- file: path={{ hadoop_path }}/share/hadoop/mapreduce/user/source/*.class state=absent
   sudo: yes
-- file: path=/usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user/source/*.jar state=absent
+- file: path={{ hadoop_path }}/share/hadoop/mapreduce/user/source/*.jar state=absent
   sudo: yes
-- file: path=/usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user/{{ mapreduce_java_file_name }}/*.jar state=absent
+- file: path={{ hadoop_path }}/share/hadoop/mapreduce/user/{{ mapreduce_java_file_name }}/*.jar state=absent
   sudo: yes
-- file: path=/usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user/{{ mapreduce_java_file_name }}/*.class state=absent
+- file: path={{ hadoop_path }}/share/hadoop/mapreduce/user/{{ mapreduce_java_file_name }}/*.class state=absent
   sudo: yes
-- file: path=/usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user/result/* state=absent
+- file: path={{ hadoop_path }}/share/hadoop/mapreduce/user/result/* state=absent
   sudo: yes
   ignore_errors: True
-- copy: src=source/{{ mapper_java_file_name }}.java dest=/usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user/source/{{ mapper_java_file_name }}.java owner=ec2-user force=yes
-- copy: src=source/{{ reducer_java_file_name }}.java dest=/usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user/source/{{ reducer_java_file_name }}.java owner=ec2-user force=yes
-- copy: src=source/{{ mapreduce_java_file_name }}.java dest=/usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user/source/{{ mapreduce_java_file_name }}.java owner=ec2-user force=yes
+- copy: src={{ hadoop_user_home_dir }}/awa/source/{{ mapper_java_file_name }}.java dest={{ hadoop_path }}/share/hadoop/mapreduce/user/source/{{ mapper_java_file_name }}.java owner={{ sudo_user }} force=yes
+- copy: src={{ hadoop_user_home_dir }}/awa/source/{{ reducer_java_file_name }}.java dest={{ hadoop_path }}/share/hadoop/mapreduce/user/source/{{ reducer_java_file_name }}.java owner={{ sudo_user }} force=yes
+- copy: src={{ hadoop_user_home_dir }}/awa/source/{{ mapreduce_java_file_name }}.java dest={{ hadoop_path }}/share/hadoop/mapreduce/user/source/{{ mapreduce_java_file_name }}.java owner={{ sudo_user }} force=yes
 
-- shell: "/usr/local/java/jdk1.8.0_25/bin/javac -classpath /usr/local/hadoop-2.6.0/share/hadoop/common/hadoop-common-2.6.0.jar:/usr/local/hadoop-2.6.0/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.6.0.jar:/usr/local/hadoop-2.6.0/share/hadoop/common/lib/commons-cli-1.2.jar:/usr/local/hadoop-2.6.0/share/hadoop/common/lib/hadoop-annotations-2.6.0.jar -d /usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user/{{ mapreduce_java_file_name }} {{ source_file_absolute_path }}/*.java"
+- shell: "{{ java_path }}/bin/javac -classpath {{ hadoop_path }}/share/hadoop/common/hadoop-common-2.6.0.jar:{{ hadoop_path }}/share/hadoop/mapreduce/hadoop-mapreduce-client-core-2.6.0.jar:{{ hadoop_path }}/share/hadoop/common/lib/commons-cli-1.2.jar:{{ hadoop_path }}/share/hadoop/common/lib/hadoop-annotations-2.6.0.jar -d {{ hadoop_path }}/share/hadoop/mapreduce/user/{{ mapreduce_java_file_name }} {{ source_file_absolute_path }}/*.java"
   sudo: yes
-- shell: "cd /usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user/{{ mapreduce_java_file_name }} && /usr/local/java/jdk1.8.0_25/bin/jar cvf {{ mapreduce_java_file_name }}.jar *"
+- shell: "cd {{ hadoop_path }}/share/hadoop/mapreduce/user/{{ mapreduce_java_file_name }} && {{ java_path }}/bin/jar cvf {{ mapreduce_java_file_name }}.jar *"
   sudo: yes
 
 

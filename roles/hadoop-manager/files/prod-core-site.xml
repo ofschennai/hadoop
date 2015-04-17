@@ -19,7 +19,7 @@
 <configuration>
 <property>
 <name>fs.default.name</name>
-<value>hdfs://ec2-52-10-112-29.us-west-2.compute.amazonaws.com:9000</value>
+<value>hdfs://ec2-54-200-111-219.us-west-2.compute.amazonaws.com:9000</value>
 </property>
 <property>
 <name>dfs.permissions</name>

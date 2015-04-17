@@ -1,1 +1,1 @@
-- shell: "hadoop jar /usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user/{{ mapreduce_java_file_name }}/{{ mapreduce_java_file_name }}.jar {{ mapreduce_java_file_name }} {{ hdfs_data_input_path }}/data {{ hdfs_data_output_path }}"
+- shell: "hadoop jar {{ hadoop_path }}/share/hadoop/mapreduce/user/{{ mapreduce_java_file_name }}/{{ mapreduce_java_file_name }}.jar {{ mapreduce_java_file_name }} {{ hdfs_data_input_path }}/data {{ hdfs_data_output_path }}"

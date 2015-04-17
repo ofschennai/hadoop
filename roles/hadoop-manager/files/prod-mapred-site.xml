@@ -19,6 +19,6 @@
 <configuration>
 <property>
 <name>mapred.job.tracker</name>
-<value>hdfs://ec2-52-10-112-29.us-west-2.compute.amazonaws.com:9001</value>
+<value>hdfs://ec2-54-200-111-219.us-west-2.compute.amazonaws.com:9001</value>
 </property>
 </configuration>

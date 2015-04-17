@@ -1,16 +1,14 @@
 [NameNode]
-ec2host1
+ec2host2
 
 [DataNodes]
-ec2host2
 ec2host3
 ec2host4
 
 [ResourceManager]
-ec2host1
+ec2host2
 
 [ec2-machines]
-ec2host1
 ec2host2
 ec2host3
 ec2host4
@@ -20,18 +18,11 @@ NameNode
 DataNodes
 ResourceManager
 
-[non-ec2-machines]
-
 [production]
-ec2host1
 ec2host2
 ec2host3
 ec2host4
 
 [slaves]
-ec2host2
 ec2host3
 ec2host4
-
-[devops]
-ec2host2
