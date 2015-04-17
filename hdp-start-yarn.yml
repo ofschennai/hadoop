@@ -1,0 +1,6 @@
+---
+- hosts: ResourceManager
+  roles:
+  - { role: hadoop-manager, action: 'hadoop_start_yarn' }
+
+
