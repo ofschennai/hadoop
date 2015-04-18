@@ -1,9 +1,0 @@
----
-- name: stop namdnode and datanodes
-  shell: "yes | {{ hadoop_path }}/sbin/stop-dfs.sh"
-  ignore_errors: true
-
-- name: stop resource manage and node managers
-  shell: "yes | {{ hadoop_path }}/sbin/stop-yarn.sh"
-  ignore_errors: true
-

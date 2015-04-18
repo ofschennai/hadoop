@@ -1,8 +1,0 @@
-ansible_ssh_host: ec2-54-200-110-38.us-west-2.compute.amazonaws.com
-ansible_ssh_user: ec2-user 
-ansible_ssh_private_key_file: "{{ aws_keys_path }}"
-sudo_user: ec2-user
-
-etc_hosts_name: ec2-54-200-110-38.us-west-2.compute.amazonaws.com
-
-
