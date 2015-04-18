@@ -1,0 +1,13 @@
+---
+clean_previous_installation: yes
+aws_keys_path: /home/ec2-user/awa/keys/ofs-karthic.pem
+awd: /tmp/ansible
+key_file_name: ofs-karthic.pem
+java_version: jdk1.8.0_25
+java_parent_path: /usr/local/java
+java_path: /usr/local/java/jdk1.8.0_25
+jdk_file_name: jdk-8u25-linux-x64.gz
+stage_prod: production
+hadoop_parent_path: "/usr/local"
+hadoop_path: "/usr/local/hadoop-2.6.0"
+

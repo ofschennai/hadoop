@@ -1,0 +1,7 @@
+---
+- hosts: NameNode
+  roles:
+  - { role: hadoop-manager, action: 'hadoop_start_dfs' }
+
+
+

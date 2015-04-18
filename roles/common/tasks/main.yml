@@ -1,0 +1,13 @@
+---
+
+- include: "install_java.yml"
+  when: action == 'install_java' 
+
+- include: "prepare_hosts.yml"
+  when: action == 'prepare_hosts' 
+
+
+
+
+
+   

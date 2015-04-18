@@ -1,0 +1,4 @@
+---
+- hosts: NameNode
+  roles:
+  - { role: hadoop-user, action: 'hadoop_load_result' }

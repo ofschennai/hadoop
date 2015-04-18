@@ -1,0 +1,11 @@
+---
+#- debug: msg="{{ hostvars[item]['ansible_user_id'] }}@{{ hostvars[item]['ansible_hostname'] }}"
+#  with_items: groups['slaves']
+
+- shell: "cat $HOME/.ssh/id_rsa.pub | ssh {{ hostvars[item]['ansible_user_id'] }}@{{ hostvars[item]['ansible_hostname'] }} 'yes | cat >> ~/.ssh/authorized_keys <<< yes'"
+  with_items: groups['slaves']
+
+
+
+
+

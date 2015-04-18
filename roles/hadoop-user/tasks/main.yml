@@ -1,0 +1,14 @@
+---
+
+- include: "hadoop_build_mapreduce.yml"
+  when: action == 'hadoop_build_mapreduce'
+
+- include: "hadoop_load_data.yml"
+  when: action == 'hadoop_load_data'
+
+- include: "hadoop_run_mapreduce.yml"
+  when: action == 'hadoop_run_mapreduce'
+
+- include: "hadoop_load_result.yml"
+  when: action == 'hadoop_load_result'
+

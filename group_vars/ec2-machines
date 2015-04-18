@@ -1,0 +1,5 @@
+---
+aws_keys_path: /home/ec2-user/awa/keys/ofs-karthic.pem
+sudo_user: ec2-user
+hadoop_user_home_dir: /home/ec2-user
+

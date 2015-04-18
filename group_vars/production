@@ -1,0 +1,4 @@
+---
+sudo_user: ec2-user
+hadoop_user_home_dir: /home/ec2-user
+

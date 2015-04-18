@@ -1,0 +1,3 @@
+---
+#sudo_user: root
+hadoop_user_home_dir: /root

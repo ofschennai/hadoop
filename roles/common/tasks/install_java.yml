@@ -1,0 +1,66 @@
+---
+- name: create java install path
+  file: path={{ java_parent_path }} state=directory
+  sudo: yes
+
+- name: unarchive the java installation files
+  unarchive: src={{ hadoop_user_home_dir }}/awa/binaries/{{ jdk_file_name }} dest={{ java_parent_path }}
+  sudo: yes
+
+- name: remove open java
+  file: path=/usr/bin/java state=absent
+  sudo: yes
+  file: path=/usr/bin/javac state=absent
+  sudo: yes
+  file: path=/usr/bin/javaws state=absent
+  sudo: yes
+#  shell: sudo rm /usr/bin/java removes=/usr/bin/java
+#  shell: sudo rm /usr/bin/javac removes=/usr/bin/javac
+#  shell: sudo rm /usr/bin/javaws removes=/usr/bin/javaws
+
+- name: update system to use installed java
+#  alternatives: name=java link=/usr/bin/java path="{{ java_path }}"/bin/java
+#  sudo: yes
+#  alternatives: name=javac link=/usr/bin/javac path="{{ java_path }}"/bin/javac
+#  sudo: yes
+#  alternatives: name=javaws link=/usr/bin/javaws path="{{ java_path }}"/bin/javaws
+#  sudo: yes 
+
+  shell: "sudo update-alternatives --install /usr/bin/java java {{ java_path }}/bin/java 1"
+  sudo: yes
+  shell: "sudo update-alternatives --install /usr/bin/javac javac {{ java_path }}/bin/javac 1"
+  sudo: yes 
+  shell: "sudo update-alternatives --install /usr/bin/javaws javaws {{ java_path }}/bin/javaws 1"
+  sudo: yes
+#  shell: "sudo update-alternatives --set java {{ java_path }}/bin/java"
+#  sudo: yes 
+#  shell: "sudo update-alternatives --set javac {{ java_path }}/bin/javac"
+#  sudo: yes
+#  shell: "sudo update-alternatives --set javaws {{ java_path }}/bin/javaws"
+#  sudo: yes
+
+
+- name: add java path to /etc/profile
+  lineinfile: dest=/etc/profile state=absent regexp="JAVA_HOME={{ java_path }}" backrefs=yes
+  sudo: yes
+  lineinfile: dest=/etc/profile state=absent regexp="export JAVA_HOME" backrefs=yes
+  sudo: yes
+  lineinfile: dest=/etc/profile state=absent regexp="PATH=$PATH:$HOME/bin:$JAVA_HOME/bin" backrefs=yes
+  sudo: yes
+  lineinfile: dest=/etc/profile state=absent regexp="export PATH"
+  sudo: yes
+  lineinfile: dest=/etc/profile line="JAVA_HOME={{ java_path }}"
+  sudo: yes
+  lineinfile: dest=/etc/profile line="export JAVA_HOME" 
+  sudo: yes
+  lineinfile: dest=/etc/profile line="PATH=$PATH:$HOME/bin:$JAVA_HOME/bin"
+  sudo: yes
+  lineinfile: dest=/etc/profile line="export PATH"
+  sudo: yes
+
+- name: reload /etc/profile
+  shell: ". /etc/profile"
+  sudo: yes
+
+    
+

@@ -1,0 +1,14 @@
+#stage_prod: production
+source_file_absolute_path: /usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user/source
+data_file_absolute_path: /usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user
+result_file_absolute_path: /usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user/result
+hdfs_data_input_path: /input/weather
+hdfs_data_output_path: /output/weather
+mapper_java_file_name: MaxTemperatureMapper
+reducer_java_file_name: MaxTemperatureReducer
+mapreduce_java_file_name: MaxTemperature
+mapreduce_int_jar_file_name: maxtemp_classes
+mapreduce_class_absolute_path: /usr/local/hadoop-2.6.0/share/hadoop/mapreduce/user/maxtemp_classes
+
+
+

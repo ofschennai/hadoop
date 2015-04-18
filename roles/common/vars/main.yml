@@ -1,0 +1,7 @@
+# variables for java installation
+
+# java_version: jdk1.8.0_25
+# java_parent_path: /usr/local/java
+# java_path: /usr/local/java/jdk1.8.0_25
+# jdk_file_name: jdk-8u25-linux-x64.gz
+# stage_prod: production

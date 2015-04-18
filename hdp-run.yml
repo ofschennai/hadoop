@@ -1,0 +1,5 @@
+---
+- hosts: NameNode
+  roles:
+  - { role: hadoop-user, action: 'hadoop_run_mapreduce' }
+

@@ -1,0 +1,6 @@
+---
+#- script: "{{ hadoop_path }}/sbin/start-yarn.sh"
+
+- shell: "cd {{ hadoop_path }}/sbin"
+
+- shell: "yes | /usr/local/hadoop-2.6.0/sbin/start-yarn.sh"
